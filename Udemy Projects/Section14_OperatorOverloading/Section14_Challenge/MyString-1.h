@@ -4,7 +4,8 @@ using std::ostream;
 using std::istream;
 
 /*
- * I am trying to implement the overloading as member function 
+ * The -1 header and implementation CPP files are being used to implement the overloaded operators 
+ * as member methods within the clas.
  */
 
 class MyString
