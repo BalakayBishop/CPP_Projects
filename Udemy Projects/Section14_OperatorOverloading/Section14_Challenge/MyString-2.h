@@ -4,8 +4,8 @@ using std::ostream;
 using std::istream;
 
 /*
- *  this is going to be used to implement non-member functions
- * of the same overloaded operators
+ * Where the -1 was a class that implemented the overloaded operators as member methods
+ * The -2 class is intended to implement the overloaded operators as non-member function of the class
  * 
  */
  
