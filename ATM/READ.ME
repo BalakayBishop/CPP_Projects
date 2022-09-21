@@ -1,1 +1,26 @@
+The idea behind this project was to semi-emulate an ATM machine.
 
+Within the main, the program will first ask the user to input their name.
+  This is going to create an object of the Bank class.
+  The Bank class will use the combination of the first and last name of the user to create a path to a file.
+  The path of this file is going to be in the C:\ drive of a Windows file system
+The next step for the program is to display the menu for the user's selection
+  Within the class's display method is a method called read()
+  read() is a friend function of the class to open files to read their data
+  The data that is stored on the file is the previous balance for the user
+The first step of the read() method is verify whether or not there is a file to be opened
+  If there is a file then it will read the information, convert it to a double to be passed back as the user's balance
+  If there is no file opened then it will call the write() method that will create a file for the user in the C:\ drive
+The second step of the program is to allow the user to input their selection
+  There is a do-while loop that will allow the user to make selections until they want to exit
+  The first is to check their balance, a simple display of the get_balance()
+  They can deposit money, this will transfer control to the deposit() method 
+    This method will ask the user how much they would like to deposit
+    This amount will be taken to update the balance
+    It will also call write() to update the user's file
+The third option is to withdraw money from their account
+  Theere is a control statement to check to make sure they have the money available to withdraw
+  Again this will call write() in order to update the file 
+Lastly, the option to exit the program
+  If they choose this option then it will display a goodbye message
+  After the message is displayed then it will transfer control back to main and exit
