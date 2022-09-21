@@ -47,20 +47,50 @@ void Bank:: set_lastName(const string &lname)
     } 
 }
 
+double read(const string &fileName)
+{
+    ifstream file;
+    file.open(fileName);
+    
+    string data {};
+    
+    if(file.is_open())
+    {
+        std::getline(file, data);
+    }
+    
+    if(data.empty())
+    {
+        file.close();
+        return 0.0;
+    }
+    else 
+    {
+        file.close();
+        return (std::stod(data));
+    }
+}
+
+void write(const string &fileName, const int bal)
+{
+    ofstream o_file;
+    o_file.open(fileName);
+    if(o_file.is_open())
+    {
+        o_file << bal << endl;
+    }
+    
+    o_file.close();
+}
+
 void Bank:: display_menu()
 {
     bool exit {false};
     
-    ofstream o_file;
-    ifstream i_file;
-    
-    o_file.open(file_name);
-    i_file.open(file_name);
-    
     do {
+        this->set_balance(read(this->file_name));
         int selection {};
         double amount {};
-        double num {};
         string file_bal {};
         cout << "---------------" << endl;
         cout << "1. Check balance" << endl;
@@ -75,35 +105,15 @@ void Bank:: display_menu()
         {
             case 1:
                 cout << "---------------" << endl;
-                
-                if (i_file.is_open())
-                {
-                    getline(i_file, file_bal);
-                }
-                if (file_bal == "")
-                {
-                    set_balance(0);
-                }
-                else
-                {
-                    num = std::stod(file_bal);
-                    set_balance(num);
-                }
                 cout << "Current account balance: " << get_balance() << endl;
                 cout << "---------------" << endl;
-                i_file.close();
                 break;
             case 2:
                 cout << "---------------" << endl;
                 cout << "How much would you like to deposit: ";
                 cin >> amount;
                 deposit(amount);
-                if (o_file.is_open())
-                {
-                    o_file << this->get_balance() << endl;
-                }
                 cout << "---------------" << endl;
-                o_file.close();
                 break;
             case 3:
                 cout << "---------------" << endl;
@@ -112,11 +122,6 @@ void Bank:: display_menu()
                 if (this->balance >= amount)
                 {
                     withdraw(amount);
-                    if (o_file.is_open())
-                    {
-                        o_file << this->get_balance() << endl;
-                    }
-                    o_file.close();
                     cout << amount << " withdrawn" << endl;
                 }
                 else 
@@ -145,11 +150,11 @@ void Bank:: display_menu()
 void Bank:: deposit(double amount)
 {
     this->balance += amount;
+    write(this->file_name, this->balance);
 }
 
 void Bank:: withdraw(double amount)
 {
     this->balance -= amount;
+    write(this->file_name, this->balance);
 }
-
-

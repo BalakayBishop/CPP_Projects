@@ -11,10 +11,12 @@ using std::ifstream;
 
 class Bank
 {
+    friend double read(const string &file_name);
+    friend void write(const string &fileName, const int bal);
 private:
     string first_name;
     string last_name;
-    double balance {0};
+    double balance {};
     string file_name;
     
     void set_balance(double num);
