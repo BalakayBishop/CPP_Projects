@@ -47,6 +47,18 @@ void Bank:: set_lastName(const string &lname)
     } 
 }
 
+void write(const string &fileName, const int bal)
+{
+    ofstream o_file;
+    o_file.open(fileName);
+    if(o_file.is_open())
+    {
+        o_file << bal << endl;
+    }
+    
+    o_file.close();
+}
+
 double read(const string &fileName)
 {
     ifstream file;
@@ -57,6 +69,10 @@ double read(const string &fileName)
     if(file.is_open())
     {
         std::getline(file, data);
+    }
+    else 
+    {
+        write(fileName, 0);
     }
     
     if(data.empty())
@@ -69,18 +85,6 @@ double read(const string &fileName)
         file.close();
         return (std::stod(data));
     }
-}
-
-void write(const string &fileName, const int bal)
-{
-    ofstream o_file;
-    o_file.open(fileName);
-    if(o_file.is_open())
-    {
-        o_file << bal << endl;
-    }
-    
-    o_file.close();
 }
 
 void Bank:: display_menu()
