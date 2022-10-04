@@ -95,7 +95,7 @@ void Bank:: display_menu()
         this->set_balance(read(this->file_name));
         int selection {};
         double amount {};
-        string file_bal {};
+        // string file_bal {};
         cout << "---------------" << endl;
         cout << "1. Check balance" << endl;
         cout << "2. Deposit" << endl;
