@@ -37,7 +37,7 @@ int main()
     try 
     {
         mpg = calc_mpg(miles, gallons);
-        cout << "Resut: " << mpg << endl;
+        cout << "Result: " << mpg << endl;
     }
     
     catch (const DivideByZero &ex) 
