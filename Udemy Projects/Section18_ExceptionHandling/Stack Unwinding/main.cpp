@@ -55,11 +55,11 @@ int main()
  *      it will pop and go back to b
  *      b will never finish and go back to a
  *      a will never finish and go back to main 
- *      main will catch the excpetion and finish
+ *      main will catch the exception and finish
  * 
  * with try { func_c() } 
  *      main will start, a will start, b will start, c will start
- *      exception thow and caught in func_b
+ *      exception throw and caught in func_b
  *      c will not finish
  *      a, b, and main will finish normally
  */
